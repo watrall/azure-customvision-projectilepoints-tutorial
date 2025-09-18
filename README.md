@@ -33,8 +33,8 @@ This tutorial will walk you through building a **machine learning classifier** f
 
 Why does this matter? Archaeologists, museum professionals, and students often face the challenge of sorting, labeling, and teaching typologies with large numbers of objects. A classifier doesn’t replace expertise, but it can act as a **research assistant**: helping you organize collections, test hypotheses, or give students hands-on experience with real datasets. Because everything is hosted on **Azure**, the system is accessible from anywhere, requires no local installs, and can even be integrated into teaching tools like Power Apps.
 
+The larger goal here is trust. Many scholars are wary of AI because it feels opaque or overly technical. This tutorial shows that with **Azure Custom Vision**, you can build and evaluate models in a **transparent, step-by-step process**. You’ll see how the system learns, how it reports its strengths and weaknesses, and how you can refine it. By demystifying the process, the tutorial aims to help archaeologists and museum scholars use AI critically, responsibly, and confidently in their own work.
 
----
 
 ## What You’ll Learn
 
@@ -47,7 +47,7 @@ Why does this matter? Archaeologists, museum professionals, and students often f
 - (Optional) Create a no-code Power Apps front end for easy sharing.  
 - Work ethically with heritage collections.  
 
----
+
 
 ## What You’ll Need
 
@@ -61,7 +61,7 @@ Why does this matter? Archaeologists, museum professionals, and students often f
   - Include variation: different lighting, backgrounds, and orientations. A model trained only on clean catalog shots may struggle with field photos.  
   - More images are always better—large, varied datasets usually produce more accurate models. But don’t worry if you’re starting small; even 50 images will let you complete this tutorial.  
 - No installs required—everything runs in the browser.  
----
+
 
 ## Understanding Computer Vision
 
@@ -73,7 +73,7 @@ This distinction builds confidence. The system isn’t “deciding” what an ob
 
 Finally, performance depends on data. If your dataset varies in lighting, backgrounds, materials, and angles, the model becomes more robust. If it only includes pristine catalog shots, it may falter on field photos. Use AI critically, as a transparent assistant you can test, evaluate, and trust.
 
----
+
 
 ## Why Azure Custom Vision
 
@@ -84,7 +84,7 @@ The key strength of Azure Custom Vision is that it lets you train AI on your own
 It also scales with your needs. Start small in a classroom, then grow into museum-scale datasets. It works on Free (F0) and Azure for Students tiers, so you can experiment without cost. And because uploading, labeling, training, and testing all happen in one place, it’s less overwhelming than advanced platforms.
 
 Most importantly, Azure Custom Vision helps build trust. You get clear metrics—precision, recall, and a confusion matrix—to see where your model shines and where it struggles. This openness makes it easier to treat AI like a lab instrument you can calibrate and critique—not a magic oracle.
----
+
 
 ## Understanding Bias in Machine Learning
 
@@ -94,7 +94,7 @@ Bias in ML comes from two places:
 
 The key is transparency: AI is not magic, but with honest evaluation, it can be a reliable assistant.  
 
----
+
 
 ## Ethics, Rights, Permissions, and Cultural Property
 
@@ -107,7 +107,7 @@ When working with museum collections and archaeological records, we need to reme
 - **Bias and framing:** Typologies are scholarly constructs, not objective truths.  
 
 This tutorial is designed as a teaching and research tool. It should be used responsibly, in collaboration with institutions and communities, and never as a substitute for expertise, consultation, or ethical stewardship.
----
+
 
 # Step-by-Step Tutorial
 
@@ -137,7 +137,7 @@ Azure resources are the “infrastructure” your model needs: a container (Reso
    - Pricing tier: F0 (Free)  
    - Region: same as Training  
 5. Open your Resource Group → confirm both appear and list the same Location.
----
+
 
 ## 2) Plan your dataset and taxonomy
 
@@ -153,7 +153,7 @@ Models only learn what you show them. Decide your categories (labels), aim for b
 3. On your computer, create a folder structure where each projectile point type has its own folder. For example: place all your Clovis images into a folder named *clovis*, all your Folsom images into *folsom*, and so on. The folder names should match the categories you plan to use in Azure Custom Vision.  
 4. Record a mapping table (CSV/Markdown) of filename → label.  
 5. Move 10–20% per class into a separate folder to act as your held-out test set (do not upload these).
----
+
 
 ## 3) Create an Azure Custom Vision project
 
@@ -176,7 +176,7 @@ Now that your resources exist, you need a project to actually hold your dataset 
    - Domain: **General**  
 3. Click **Create Project**.  
 4. The project dashboard opens — this is where you’ll upload images and train models.
----
+
 
 ## 4) Upload & label images
 
@@ -193,7 +193,7 @@ With your project created, it’s time to give the model something to learn from
 4. Repeat the upload/tagging process for each type (Folsom, Dalton, Kirk, etc.).  
 5. Verify: In the left-hand tag list, you should see each type you created. Click a tag to filter and confirm the images are correctly assigned.  
 6. If you spot mistakes, click an image, edit its tags, and save.  
----
+
 
 ## 5) Train your first model in Azure Custom Vision
 
@@ -209,7 +209,7 @@ Now you let Azure do the heavy lifting: turning labeled images into a working mo
 3. Click **Train**.  
 4. Wait — this can take 1–10 minutes depending on dataset size.  
 5. When training finishes, you’ll see **Iteration 1** with metrics: precision, recall, and average precision.  
----
+
 
 ## 6) Evaluate like a researcher
 
@@ -225,7 +225,7 @@ Numbers matter — but only if you know how to read them. Azure gives you precis
 3. **Recall**: of all Clovis images in the dataset, what percentage did the model correctly find?  
 4. **Confusion Matrix**: shows where misclassifications happen (e.g., Dalton images mislabeled as Kirk).  
 5. Compare metrics across tags. If one type lags, plan to add more or better images for it.  
----
+
 
 ## 7) Improve your dataset (iterate)
 
@@ -242,7 +242,7 @@ Machine learning is not one-and-done. You refine, retrain, and improve.
 4. Retrain: click **Train** again → choose **Quick Training**.  
 5. A new iteration appears (Iteration 2).  
 6. Compare Iteration 1 vs Iteration 2. Which metrics improved?  
----
+
 
 ## 8) Publish the best iteration
 
@@ -259,7 +259,7 @@ Once you’re satisfied, publish so the model is available via a prediction endp
 4. Select your Prediction resource (`cv-prediction-points`).  
 5. Click **Publish**.  
 6. Go to the **Prediction URL** tab — copy the endpoint and prediction key. You’ll need them for cURL/Python.  
----
+
 
 ## 9) Test the endpoint (portal, cURL, Python)
 
@@ -275,7 +275,7 @@ Time to check your deployed model. You’ll test in three ways: in the portal, f
 3. See the predicted tag and probability.  
 
 ### Step-by-step (cURL)
-1. Open a terminal:  
+1. On your computer, open a terminal:  
    - **Windows:** Press **Start**, type `cmd`, hit Enter.  
    - **macOS/Linux:** Open **Terminal** from Applications/Utilities.  
 2. Run this command (replace `PREDICTION_URL` and `PREDICTION_KEY`):  
@@ -307,7 +307,7 @@ Make sure you set environment variables first:
   $env:PREDICTION_URL="https://<region>.api.cognitive.microsoft.com/customvision/v3.0/Prediction/<projectId>/classify/iterations/<publishedName>/image"
   $env:PREDICTION_KEY="<your-prediction-key>"
   ```
----
+
 
 ## 10) Responsible sharing
 
@@ -324,7 +324,7 @@ Now that your model works, think carefully about how it’s shared and used.
    - Known limitations or biases.  
 2. State clearly: “This classifier is a teaching and research tool. It does not replace expert analysis.”  
 3. Share responsibly: avoid uploading sensitive images or site coordinates.  
----
+
 
 ## 11) (Optional) Build a no-code front end with Power Apps
 
@@ -342,7 +342,7 @@ For colleagues or students without coding skills, you can make a drag-and-drop i
 5. Paste your Prediction URL and key.  
 6. Add a text box to display the returned tag and probability.  
 7. Save and share the app with colleagues.  
----
+
 
 # Troubleshooting
 
@@ -351,7 +351,7 @@ For colleagues or students without coding skills, you can make a drag-and-drop i
 - **Class imbalance?** Add more images to underrepresented classes.  
 - **Overfitting?** Remove near-duplicate images or add more varied examples.  
 
----
+
 
 # Contributing to this Tutorial
 
@@ -363,16 +363,13 @@ We welcome improvements. If you want to tweak the tutorial, fix bugs, or add exa
 4. Commit and push to your fork.  
 5. Open a Pull Request back to this repo — explain what changed and why.  
 
----
 
-# License & Citation
 
-- **Code:** Apache-2.0  
-- **Docs:** Creative Commons Attribution (CC BY 4.0)  
+# Citation
 
 If you use or adapt this tutorial, please cite the repository. Include the provided `CITATION.cff` so GitHub can generate APA/BibTeX automatically (look for “Cite this repository” on the repo page).  
 
----
+
 
 # Glossary
 
