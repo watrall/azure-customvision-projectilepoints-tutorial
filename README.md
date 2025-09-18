@@ -153,7 +153,44 @@ Models only learn what you show them. Decide your categories (labels), aim for b
 3. On your computer, create a folder structure where each projectile point type has its own folder. For example: place all your Clovis images into a folder named *clovis*, all your Folsom images into *folsom*, and so on. The folder names should match the categories you plan to use in Azure Custom Vision.  
 4. Record a mapping table (CSV/Markdown) of filename → label.  
 5. Move 10–20% per class into a separate folder to act as your held-out test set (do not upload these).
----
+
+### A More Detailed Guide to Data Best Practices
+
+Data quality is the most critical factor in machine learning. For your tutorial, expanding on the "Plan your dataset" step will significantly improve the outcome for your users.
+
+#### 1. Image Variety is Key
+
+A good dataset isn't just about quantity; it's about quality and variety. The model will only be as good as the examples you give it.
+
+* **Avoid "Samey" Images**: Don't just take pictures of all your projectile points on a single white background with the same lighting. The model will learn to associate "white background" with your target object, making it unable to recognize a point on a different surface.
+* **Vary the Conditions**: Take photos in different locations and under different conditions.
+    * **Lighting**: Use natural light, a lamp, and even low-light conditions.
+    * **Backgrounds**: Place the points on different surfaces like a wooden table, a rock, or a piece of cloth.
+    * **Angles**: Take pictures from the top, the side, and at various angles.
+    * **Orientation**: The point should be facing different directions in the photos (e.g., tip up, tip down, lying on its side).
+    * **Material and Color**: Ensure you have a good representation of different materials and colors if they vary among your projectile point types.
+
+#### 2. Labeling Accuracy is Everything
+
+The labels you provide are the "ground truth" for the model. Mistakes here will lead to poor performance.
+
+* **Double-Check Your Work**: Carefully review each image after tagging it to make sure the label is correct. A single incorrect label can confuse the model.
+* **Use Clear Categories**: Make sure your labels are distinct and don't overlap. For example, avoid having two similar-sounding categories like "Early Archaic Point" and "Archaic Point."
+
+#### 3. The "Rule of Threes" (or more)
+
+As a general rule of thumb for this type of model, aim for the following minimums per category:
+
+* **Minimum 15 Images per Tag**: This is the lowest recommended number to get a decent result.
+* **Ideally 50+ Images per Tag**: For better performance, aim for a larger and more varied set of images. The more examples you can provide for a specific projectile point type, the better the model will learn to identify it.
+* **Balance Your Dataset**: Try to have a roughly equal number of images for each category. If you have 100 images of one type and only 15 of another, the model may become "biased" towards the larger category and struggle to identify the smaller one.
+
+#### 4. What to Avoid
+
+* **Bad Images**: Do not include blurry, overexposed, or underexposed photos. The model cannot learn from what it cannot "see."
+* **Irrelevant Information**: Avoid images that contain more than just the object of interest. If you are photographing a projectile point, try not to include a ruler, your hand, or other distracting objects in the picture. This can confuse the model and make it learn to identify those objects instead of the point.
+* **Duplicate Images**: Do not upload the same exact image multiple times to pad your dataset. This will not help the model learn and may lead to overfitting.
+
 
 ## 3) Create an Azure Custom Vision project
 
