@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+title: Projectile Point Classifier with Azure Custom Vision — From Labeled Photos to Deployed Classifier (Beginner Friendly)
+message: If you use or adapt this tutorial, please cite this repository.
+type: software
+authors:
+  - name: Community contributors
+repository-code: https://github.com/your-org/azure-customvision-projectilepoints
+keywords:
+  - tutorial
+  - Azure Custom Vision
+  - Image Classification
+  - Projectile Points
+  - Archaeology
+  - Museum Collections
+  - Digital Heritage
+  - Data Analysis
+  - Python
+  - OCR
+license: Apache-2.0
