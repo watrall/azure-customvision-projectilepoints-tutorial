@@ -33,7 +33,7 @@ This tutorial will walk you through building a **machine learning classifier** f
 
 Why does this matter? Archaeologists, museum professionals, and students often face the challenge of sorting, labeling, and teaching typologies with large numbers of objects. A classifier doesn’t replace expertise, but it can act as a **research assistant**: helping you organize collections, test hypotheses, or give students hands-on experience with real datasets. Because everything is hosted on **Azure**, the system is accessible from anywhere, requires no local installs, and can even be integrated into teaching tools like Power Apps.
 
-The larger goal here is trust. Many scholars are wary of AI because it feels opaque or overly technical. This tutorial shows that with **Azure Custom Vision**, you can build and evaluate models in a **transparent, step-by-step process**. You’ll see how the system learns, how it reports its strengths and weaknesses, and how you can refine it. By demystifying the process, the tutorial aims to help archaeologists and museum scholars use AI critically, responsibly, and confidently in their own work.
+
 ---
 
 ## What You’ll Learn
